@@ -1,0 +1,139 @@
+<section class="w-50 mx-auto mt-4">
+  <!-- email -->
+  @if(steps == 1){
+  <h1 class="fw-bold h3 mb-4">Forger Password :</h1>
+  <form [formGroup]="verifyEmail" (ngSubmit)="SetEmailForget()">
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        formControlName="email"
+      />
+      @if( verifyEmail.get('email')?.errors &&
+      (verifyEmail.get('email')?.touched|| verifyEmail.get('email')?.dirty)){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if(verifyEmail.get('email')?.getError('required')){
+        <p class="m-0 p-0">Required email</p>
+        } @else if(verifyEmail.get('email')?.getError('email')){
+        <p class="m-0 p-0">Enter valid Email</p>
+        }
+      </div>
+      }
+      <label for="floatingInput">Email address : </label>
+    </div>
+    <button
+      type="submit"
+      [disabled]="verifyEmail.invalid"
+      class="btn-main ms-auto d-block mb-4"
+    >
+      @if (isLading ) {
+      <i class="fa fa-spinner fa-spin"></i>
+      } send
+    </button>
+  </form>
+
+  }
+  <!-- code -->
+  @if(steps == 2){
+  <h1 class="fw-bold h3 mb-4">Enter Code :</h1>
+  <form [formGroup]="verifyCode" (ngSubmit)="SetCodeForgetForms()">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="123 - 456"
+        formControlName="resetCode"
+      />
+      @if(verifyCode.get('resetCode')?.errors &&
+      (verifyCode.get('resetCode')?.touched||
+      verifyCode.get('resetCode')?.dirty) ){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if ( verifyCode.get('resetCode')?.getError('required')) {
+        <p class="m-0 p-0">Code required</p>
+        } @else if (verifyCode.get('resetCode')?.getError('pattern')) {
+        <p class="m-0 p-0">Code Is 6 Number</p>
+
+        }
+      </div>
+      }
+      <label for="floatingInput">Code : </label>
+    </div>
+    <button
+      type="submit"
+      [disabled]="verifyCode.invalid"
+      class="btn-main ms-auto d-block mb-4"
+    >
+      @if (isLading ) {
+      <i class="fa fa-spinner fa-spin"></i>
+      } send
+    </button>
+  </form>
+  }
+  <!-- resetPassword -->
+  @if (steps == 3) {
+  <h1 class="fw-bold h3 mb-4">Rest Password :</h1>
+
+  <form [formGroup]="verifyRePassword" (ngSubmit)="SetPassForgetForms()">
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        formControlName="email"
+      />
+      @if( verifyRePassword.get('email')?.errors &&
+      (verifyRePassword.get('email')?.touched||
+      verifyRePassword.get('email')?.dirty)){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if(verifyRePassword.get('email')?.getError('required')){
+        <p class="m-0 p-0">Required email</p>
+        } @else if(verifyRePassword.get('email')?.getError('email')){
+        <p class="m-0 p-0">Enter valid Email</p>
+        }
+      </div>
+      }
+      <label for="floatingInput">Email address : </label>
+    </div>
+    <!-- new Password -->
+    <div class="form-floating mb-3">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingInput"
+        placeholder="password"
+        formControlName="newPassword"
+      />
+      <!--  -->
+      @if( verifyRePassword.get('newPassword')?.errors &&
+      (verifyRePassword.get('newPassword')?.touched||
+      verifyRePassword.get('newPassword')?.dirty)){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if(verifyRePassword.get('newPassword')?.getError('required')){
+        <p class="m-0 p-0">Required password</p>
+        } @else if(verifyRePassword.get('newPassword')?.getError('pattern')){
+        <p class="m-0 p-0">
+          Enter valid password , Should be more or equal 3 chars or number
+        </p>
+        }
+      </div>
+      }
+      <!--  -->
+      <label for="floatingInput">New Password : </label>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="verifyRePassword.invalid"
+      class="btn-main ms-auto d-block mb-4"
+    >
+      @if (isLading ) {
+      <i class="fa fa-spinner fa-spin"></i>
+      } send
+    </button>
+  </form>
+  }
+</section>

@@ -1,0 +1,48 @@
+<section class="w-50 mx-auto mt-4">
+  <h1 class="fw-bold h3 mb-4">shipping address :</h1>
+  <form [formGroup]="orders" (ngSubmit)="ordersSubmit()">
+    <!-- Details -->
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="details"
+        formControlName="details"
+      />
+
+      <label for="floatingInput">Details : </label>
+    </div>
+    <!-- Phone -->
+    <div class="form-floating mb-3">
+      <input
+        type="tel"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Phone"
+        formControlName="phone"
+      />
+
+      <label for="floatingInput">Phone : </label>
+    </div>
+    <!--City  -->
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="City"
+        formControlName="city"
+      />
+      <label for="floatingInput">City: </label>
+    </div>
+
+    <button type="submit" class="btn-main ms-auto d-block mb-4 ">
+      Next
+
+       @if (isLading ) {
+      <i class="fa fa-spinner fa-spin"></i>
+      }
+    </button>
+  </form>
+</section>

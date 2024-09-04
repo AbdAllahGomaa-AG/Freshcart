@@ -1,0 +1,53 @@
+@if (details){
+<section class="mt-4 mb-4">
+  <div class="row align-items-center">
+    <div class="col-md-4  text-center">
+      <img [src]="details.imageCover" class="w-50 rounded-2" [alt]="details.title" />
+      <div class="images text-center mt-4 ">
+
+        <img [src]="details.images[0]" class="w-25 rounded-2 p-1 m-1 product" [alt]="details.title" (click)="onImageClick(details.images[0])"  />
+        <img [src]="details.images[1]" class="w-25 rounded-2 p-1 m-1 product" [alt]="details.title"  (click)="onImageClick(details.images[1])"  />
+        <img [src]="details.images[2]" class="w-25 rounded-2 p-1 m-1 product" [alt]="details.title"  (click)="onImageClick(details.images[2])"/>
+
+      </div>
+      <div class="d-flex justify-content-center align-items-center mt-4">
+        <button class="btn-main w-75 m-1" (click)="addToCartCount(details._id)"><i class="fa-solid fa-cart-shopping"></i></button>
+        <button class="btn btn-danger w-25 m-1" (click)="addToWishlist(details._id)">
+          <i class="fa-solid fa-heart text-white"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h2 class="fw-bold">{{ details.title }}</h2>
+      <p class="text-muted">
+        <span class="fw-bold text-black">Description : </span>
+        {{ details.description }}
+      </p>
+      <h3 class="h6 text-main fw-bold">
+        <span class="fw-bold text-black">Category : </span
+        >{{ details.category.name }}
+      </h3>
+
+      <div class="car-footer">
+        <p class="">
+          <span class="text-black fw-bold p-0 m-0">Price : </span>{{ details.price }} EG
+        </p>
+        <div>
+          <span class="fw-bold text-black">Rate : </span>
+          @for (num of [1,2,3,4,5].slice(0,details.ratingsAverage); track
+          $index) {
+          <span class="">
+            <i class="fas fa-star rating-color"></i>
+          </span>
+          } @if (details.ratingsAverage %1 !==0) {
+
+          <i class="fa-solid fa-star-half-stroke rating-color"></i>
+          }
+          <span>{{ details.ratingsAverage }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+}

@@ -1,0 +1,130 @@
+<nav class="navbar navbar-expand-lg bg-main-ag">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home"
+      ><img src="./assets/images/freshcart-logo.svg" alt=""
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--  -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link ms-1 active"
+            aria-current="page"
+            routerLink="home"
+            routerLinkActive="active-link "
+            >Home</a
+          >
+        </li>
+        <!--  -->
+
+        <!--  -->
+        <li class="nav-item">
+          <a
+            class="nav-link ms-1 active"
+            aria-current="page"
+            routerLink="brands"
+            routerLinkActive="active-link "
+            >Brands</a
+          >
+        </li>
+        <!--  -->
+        <li class="nav-item">
+          <a
+            class="nav-link ms-1 active"
+            aria-current="page"
+            routerLink="Categories"
+            routerLinkActive="active-link "
+            >Categories</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link ms-1 active"
+            aria-current="page"
+            routerLink="product"
+            routerLinkActive="active-link "
+            >Product</a
+          >
+        </li>
+      </ul>
+      <!-- icons -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 icon">
+        <!-- cart -->
+         <p class="fw-bold mt-2 h-4 me-3"  >Hi, {{userName}}</p>
+        <li class="nav-item">
+          <a
+            class="nav-link ms-1 active position-relative"
+            aria-current="page"
+            routerLink="cart"
+            routerLinkActive="active-link-icon  "
+          >
+            <i class="fa-solid fa-cart-shopping fs-4"></i>
+            <span
+              class="badge bg-success fs-6 position-absolute p-1 top-0 start-0"
+            >
+              {{ countNumber }}</span
+            >
+          </a>
+        </li>
+        <!-- heart  -->
+        <li class="nav-item">
+          <a
+            class="nav-link ms-1 active position-relative"
+            aria-current="page"
+            routerLink="Wishlist"
+            routerLinkActive="active-link-icon-heart  "
+          >
+            <i class="fa-solid fa-heart fs-4"></i>
+            <span
+              class="badge bg-success fs-6 position-absolute p-1 top-0 start-0"
+            >
+          </span
+            >
+          </a>
+        </li>
+        <!-- singOut -->
+        <li class="nav-item">
+          <a
+            class="nav-link active cr fw-bold"
+            aria-current="page"
+            (click)="_AuthenticationApiService.singOut()"
+          >
+            sigOut
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page">
+            <i class="fa-brands fa-facebook"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page">
+            <i class="fa-brands fa-twitter"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page">
+            <i class="fa-brands fa-linkedin"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page">
+            <i class="fa-brands fa-youtube"></i
+          ></a>
+        </li> -->

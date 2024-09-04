@@ -1,0 +1,61 @@
+<section class="w-50 mx-auto mt-4">
+  <h1 class="fw-bold h3 mb-4">login :</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="loginFormData()">
+    <!--  -->
+
+    <!--  -->
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        formControlName="email"
+      />
+      @if( loginForm.get('email')?.errors && (loginForm.get('email')?.touched||
+      loginForm.get('email')?.dirty)){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if(loginForm.get('email')?.getError('required')){
+        <p class="m-0 p-0">Required email</p>
+        } @else if(loginForm.get('email')?.getError('email')){
+        <p class="m-0 p-0">Enter valid Email</p>
+        }
+      </div>
+      }
+      <label for="floatingInput">Email address : </label>
+    </div>
+
+    <div class="form-floating mb-2">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingInput"
+        placeholder="password"
+        formControlName="password"
+      />
+
+      @if(loginForm.get('password')?.getError('required') &&
+      loginForm.get('password')?.touched){
+      <div class="alert alert-danger mt-1" role="alert">
+        <p class="m-0 p-0">Required password</p>
+      </div>
+      }
+
+      <label for="floatingInput">password: </label>
+    </div>
+    <!--  -->
+    <p class="py-0 my-0 mb-1">
+      Don't have an account yet?
+      <a routerLink="/register" class="h6 ag-text-success fw-bold">Sign Up  </a>
+    </p>
+    <p class="py-0 my-0 mb-3">
+      <a routerLink="/forget" class="h6 ag-text-success fw-bolder">Forget password </a>
+    </p>
+    <button type="submit" class="btn-main ms-auto d-block mb-4">
+      <!-- [disabled]="loginForm.invalid || isLading" -->
+      login @if (isLading ) {
+      <i class="fa fa-spinner fa-spin"></i>
+      }
+    </button>
+  </form>
+</section>

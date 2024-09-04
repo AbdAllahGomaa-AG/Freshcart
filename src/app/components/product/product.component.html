@@ -1,0 +1,56 @@
+<section class="mt-5">
+  <input
+    type="search"
+    class="form-control w-50 mx-auto my-4"
+    placeholder="search by name "
+    [(ngModel)]="TermsText"
+  />
+  <div class="row g-3 mb-4">
+    @for (product of pro |search :TermsText; track product._id) {
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="inner p-3 m-2 product">
+        <div [routerLink]="['/details', product._id]" class="cr">
+          <div class="text-center">
+            <img
+              [src]="product.imageCover"
+              class="w-75 rounded-2"
+              [alt]="product.title"
+            />
+          </div>
+          <h3 class="h6 mt-2 text-main text-uppercase fw-bolder">
+            {{ product.category.name }}
+          </h3>
+          <h4 class="h6 fw-bolder">
+            {{ product.title.split(" ", 2).join(" ") }}
+          </h4>
+          <div
+            class="car-footer d-flex justify-content-between align-items-center"
+          >
+            <p class="mt-3">{{ product.price }} EG</p>
+            <div>
+              @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage); track
+              $index) {
+              <span class="m-1">
+                <i class="fas fa-star rating-color"></i>
+              </span>
+              } @if (product.ratingsAverage %1 !==0) {
+
+              <i class="fa-solid fa-star-half-stroke rating-color"></i>
+              }
+              <span>{{ product.ratingsAverage }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-2">
+          <button class="btn-main w-75 m-1" (click)="addToCartCount(product.id)">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+          <button class="btn btn-danger btn-heart w-25 m-1" (click)="addToWishlist(product.id)" >
+            <i class="fa-solid fa-heart text-white"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</section>

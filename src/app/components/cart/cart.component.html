@@ -1,0 +1,74 @@
+<section class="">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-8">
+        <div class="d-flex justify-content-between align-items-center mt-4" >
+          <h2 class="mb-3 mt-5">
+            Shopping Cart
+            <span class="fs-6 text-muted"> ({{ cartItem }} items) </span>
+          </h2>
+          <button class="btn btn-danger" (click)="removeAll()">clear all</button>
+        </div>
+        @for (item of carDetails.products ; track item.product.id) {
+        <div class="row mb-2 border-bottom border-black product">
+          <div class="col-md-2">
+            <img
+              [src]="item.product.imageCover"
+              class="w-100"
+              [alt]="item.product.title"
+            />
+          </div>
+          <div class="col-md-10">
+            <div class="cart-price-title d-flex justify-content-between">
+              <h5 class="mb-1 mt-3 colo-main fw-bolder">
+                {{ item.product.title }}
+              </h5>
+              <h5 class="mb-1 mt-3 fw-bolder">
+                {{ item.price | currency : "EUR" }}
+              </h5>
+            </div>
+
+            <div class="Icon d-flex justify-content-between mt-4 mb-0">
+              <div
+                class="plus mb-3 d-flex justify-content-between align-items-center"
+              >
+                <div class="icons">
+                  <i
+                    class="fa-solid fa-circle-plus fs-4 colo-main me-3"
+                    (click)="UpdateCounter(item.product.id, item.count + 1)"
+                  ></i>
+                  <span class="colo-main fw-bolder fs-4">{{ item.count }}</span>
+                  <i
+                    class="fa-solid fa-circle-minus fs-4 colo-main ms-3"
+                    (click)="UpdateCounter(item.product.id, item.count - 1)"
+                  ></i>
+                </div>
+              </div>
+              <i
+                class="fa-solid fa-trash fs-3 text-danger mt-0 mb-2 cr"
+                (click)="removeItem(item.product.id)"
+              ></i>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      <div class="col-md-4">
+        <div
+          class="total d-flex justify-content-center flex-column align-items-center mt-4 bg-main-ag p-4 m-4 rounded-3"
+        >
+          <h2 class="fs-4">Total ({{ carDetails.__v }} items)</h2>
+          <h3 class="fs-5">
+            {{ carDetails.totalCartPrice | currency : "EUR" }}
+          </h3>
+          <button
+            class="uppercase btn btn-main w-100"
+            [routerLink]="['/orders', carDetails._id]"
+          >
+            checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

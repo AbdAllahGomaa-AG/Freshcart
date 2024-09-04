@@ -1,0 +1,24 @@
+
+
+  <div class="row g-3 mb-4 mt-4">
+    @for (item of CartBrands ; track item._id) {
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="inner p-3 m-2 product">
+        <div  >
+          <div class="text-center">
+            <img
+              [src]="item.image"
+              class="w-75 rounded-2"
+              [alt]="item.name"
+            />
+          </div>
+          <h3 class="h6 mt-2 text-main text-uppercase fw-bolder">
+            {{ item.name }}
+          </h3>
+
+        </div>
+
+      </div>
+    </div>
+    }
+  </div>

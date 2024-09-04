@@ -1,0 +1,170 @@
+<section class="w-50 mx-auto mt-4">
+  <h1 class="fw-bold h3 mb-4">Register Now :</h1>
+  <form [formGroup]="register" (ngSubmit)="registerData()">
+    <!--  -->
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Name"
+        formControlName="name"
+        [ngClass]="{
+          'is-invalid':
+            register.get('name')?.invalid &&
+            (register.get('name')?.touched || register.get('name')?.dirty),
+          'is-valid':
+            register.get('name')?.valid &&
+            (register.get('name')?.touched || register.get('name')?.dirty)
+        }"
+      />
+      @if( register.get('name')?.errors && (register.get('name')?.touched ||
+      register.get('name')?.dirty)){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if(register.get('name')?.getError('required')){
+        <p class="m-0 p-0">Required Name</p>
+        } @else if(register.get('name')?.getError('minlength')){
+        <p class="m-0 p-0">Name Should be more or equal 3 chars</p>
+        } @else if(register.get('name')?.getError('maxlength')){
+        <p class="m-0 p-0">Name Should be less or equal 20 chars</p>
+        }
+      </div>
+      }
+
+      <label for="floatingInput">Name : </label>
+    </div>
+    <!--  -->
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            register.get('email')?.invalid &&
+            (register.get('email')?.touched || register.get('email')?.dirty),
+          'is-valid':
+            register.get('email')?.valid &&
+            (register.get('email')?.touched || register.get('email')?.dirty)
+        }"
+      />
+      @if( register.get('email')?.errors && (register.get('email')?.touched||
+      register.get('email')?.dirty)){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if(register.get('email')?.getError('required')){
+        <p class="m-0 p-0">Required email</p>
+        } @else if(register.get('email')?.getError('email')){
+        <p class="m-0 p-0">Enter valid Email</p>
+        }
+      </div>
+      }
+      <label for="floatingInput">Email address : </label>
+    </div>
+    <!--  -->
+    <div class="form-floating mb-3">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingInput"
+        placeholder="password"
+        formControlName="password"
+        [ngClass]="{
+          'is-invalid':
+            register.get('password')?.invalid &&
+            (register.get('password')?.touched ||
+              register.get('password')?.dirty),
+          'is-valid':
+            register.get('password')?.valid &&
+            (register.get('password')?.touched ||
+              register.get('password')?.dirty)
+        }"
+      />
+      @if( register.get('password')?.errors &&
+      (register.get('password')?.touched|| register.get('password')?.dirty)){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if(register.get('password')?.getError('required')){
+        <p class="m-0 p-0">Required password</p>
+        } @else if(register.get('password')?.getError('pattern')){
+        <p class="m-0 p-0">
+          Enter valid password , Should be more or equal 3 chars or number
+        </p>
+        }
+      </div>
+      }
+      <label for="floatingInput">password: </label>
+    </div>
+    <!--  -->
+    <div class="form-floating mb-3">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingInput"
+        placeholder="rePassword"
+        formControlName="rePassword"
+        [ngClass]="{
+          'is-invalid':
+            register.get('password')?.value !==
+              register.get('rePassword')?.value &&
+            (register.get('rePassword')?.touched ||
+              register.get('rePassword')?.dirty),
+          'is-valid':
+            register.get('password')?.value ===
+              register.get('rePassword')?.value &&
+            (register.get('rePassword')?.touched ||
+              register.get('rePassword')?.dirty)
+        }"
+      />
+      @if( register.getError('miss') && (register.get('rePassword')?.touched ||
+      register.get('rePassword')?.dirty) ){
+      <div class="alert alert-danger mt-1" role="alert">
+        <p class="m-0 p-0">Password and rePassword should be same</p>
+      </div>
+      }
+      <label for="floatingInput">rePassword: </label>
+    </div>
+    <!--  -->
+
+    <!--  -->
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="phone"
+        formControlName="phone"
+        [ngClass]="{
+          'is-invalid':
+            register.get('phone')?.invalid &&
+            (register.get('phone')?.touched || register.get('phone')?.dirty),
+          'is-valid':
+            register.get('phone')?.valid &&
+            (register.get('phone')?.touched || register.get('phone')?.dirty)
+        }"
+      />
+      @if( register.get('phone')?.errors && (register.get('phone')?.touched||
+      register.get('phone')?.dirty)){
+      <div class="alert alert-danger mt-1" role="alert">
+        @if(register.get('phone')?.getError('required')){
+        <p class="m-0 p-0">Required phone</p>
+        } @else if(register.get('phone')?.getError('pattern')){
+        <p class="m-0 p-0">Enter valid phone</p>
+        }
+      </div>
+      }
+      <label for="floatingInput">phone: </label>
+    </div>
+    <p class=" py-0 my-0 mb-3">
+    I already have an account,
+      <a routerLink="/Login" class="h6 text-success fw-bolder">log in </a>
+    </p>
+    
+    <button type="submit" class="btn-main ms-auto d-block mb-4" >
+      <!-- [disabled]="register.invalid || isLading" -->
+      Register @if (isLading ) {
+      <i class="fa fa-spinner fa-spin"></i>
+      }
+    </button>
+  </form>
+</section>
